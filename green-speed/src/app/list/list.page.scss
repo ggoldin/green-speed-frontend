@@ -1,1 +1,42 @@
+.align-right {
+    text-align: right;
+}
 
+.col {
+    display: flex;
+    flex-flow: column;
+}
+
+.bottom-right-flex {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    align-self: flex-end;
+}
+
+.clearfix {
+    clear: both;
+    float: none;
+}
+
+.big-text {
+    font-size: 2em;
+}
+
+.green-score {
+    width: 101px;
+    align-self: flex-end;
+}
+
+.flex-bottom {
+    margin-top: auto;
+}
+
+.minutes {
+    //float: right;
+}
+
+.arrow-down {
+    width: 50px;
+    //float: right;
+}

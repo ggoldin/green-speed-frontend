@@ -1,16 +1,44 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
     <ion-title>
-      List
+      Search results
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
+  <ion-card>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="17px">
+            <img src="/assets/from-to.jpg"  alt="">
+          </ion-col>
+          <ion-col>
+            <p><b>FROM</b></p>
+            <p>Piazza Domenicani</p>
+            <ion-icon size="large" color="primary" name="bus"></ion-icon>
+            <p><b>TO</b></p>
+            <p>Caldaro Lake</p>
+          </ion-col>
+          <ion-col class="align-right col">
+            <p><b>Green score</b></p>
+            <img class="green-score" src="/assets/green-scale.jpg"  alt="">
+            <p><small>3/4</small></p>
+            <section class="flex-bottom bottom-right-flex">
+              <p class="minutes"><span class="big-text">00:30</span><small>min</small></p>
+              <img class="arrow-down" src="/assets/keyboard_arrow_down.svg" alt="">
+            </section>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- <ion-list>
     <ion-item *ngFor="let item of items">
       <ion-icon [name]="item.icon" slot="start"></ion-icon>
       {{item.title}}
@@ -18,10 +46,5 @@
         {{item.note}}
       </div>
     </ion-item>
-  </ion-list>
-  <!--
-    <div *ngIf="selectedItem" padding>
-      You navigated here from <b>{{selectedItem.title }}</b>
-    </div>
-  -->
+  </ion-list> -->
 </ion-content>
