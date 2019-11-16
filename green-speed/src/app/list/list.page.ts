@@ -15,15 +15,18 @@ export class ListPage implements OnInit {
   }
 
   ngOnInit() {
-    this.http.get('assets/json/results.json').subscribe(
+    this.http.get('https://green-speed.herokuapp.com/api/v1/directions?from=f&to=f').subscribe(
         data => {
           this.item = data['data'][0];
           // TO FIX: this is not correct if I have more destinations in the json, for now can be this way
           this.options = data['data'][0].transportation_options;
           this.types = this.options.map(function(e) {
-            return e.legs.map(function(i) {
-              return i.transportation_type;
-            });
+            const s = new Set();
+            for (const leg of e.legs) {
+                console.log(leg);
+                s.add(leg.transportation_type);
+            }
+            return Array.from(s);
           });
           
           console.log(this.options.legs);
