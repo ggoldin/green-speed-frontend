@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class ListPage implements OnInit {
   public item;
   public options;
-  public type;
+  public types;
   constructor( public http: HttpClient ) {
     
   }
@@ -20,13 +20,14 @@ export class ListPage implements OnInit {
           this.item = data['data'][0];
           // TO FIX: this is not correct if I have more destinations in the json, for now can be this way
           this.options = data['data'][0].transportation_options;
-          this.type = data['data'][0].transportation_options.map(function(e) {
+          this.types = this.options.map(function(e) {
             return e.legs.map(function(i) {
               return i.transportation_type;
             });
           });
-          //console.log(this.item, this.options);
-          console.log(this.type);
+          
+          console.log(this.options.legs);
+          //console.log(this.types.transportation_type, this.types.transportation_type);
         }
     );
   }
