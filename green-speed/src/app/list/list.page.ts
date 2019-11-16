@@ -29,6 +29,10 @@ export class ListPage implements OnInit {
             return Array.from(s);
           });
           console.log(this.types);
+          let i;
+          for (i = 0; i < this.options.length; i++) {
+              this.options[i].types = this.types[i];
+          }
           //console.log(this.types.transportation_type, this.types.transportation_type);
         }
     );

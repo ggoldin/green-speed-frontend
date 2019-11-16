@@ -20,15 +20,8 @@
           <ion-col>
             <p><b>DEPARTURE</b> ({{option.departure_time}})</p>
             <p>{{item.location_from}}</p>
-            <ng-container *ngFor="let type of types">
-              <span *ngIf="type == 'walking,bike'">
-                <ion-icon size="large" color="primary" name="walk"></ion-icon>
-                <ion-icon size="large" color="primary" name="bicycle"></ion-icon>
-              </span>
-              <span *ngIf="type == 'walking,bus'">
-                <ion-icon size="large" color="primary" name="walk"></ion-icon>
-                <ion-icon size="large" color="primary" name="bus"></ion-icon>
-              </span>
+            <ng-container *ngFor="let type of option.types">
+                <ion-icon size="large" color="primary" name="{{type}}"></ion-icon>
             </ng-container>
             <p><b>ARRIVAL</b> ({{option.arrival_time}})</p>
             <p>{{item.location_to}}</p>
