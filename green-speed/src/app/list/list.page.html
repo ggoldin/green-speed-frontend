@@ -10,7 +10,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-card>
+  <ion-card *ngFor="let option of options">
     <ion-card-content>
       <ion-grid>
         <ion-row>
@@ -18,33 +18,29 @@
             <img src="/assets/from-to.jpg"  alt="">
           </ion-col>
           <ion-col>
-            <p><b>FROM</b></p>
-            <p>Piazza Domenicani</p>
+            <p><b>FROM</b> ({{option.departure_time}})</p>
+            <p>{{item.location_from}}</p>
             <ion-icon size="large" color="primary" name="bus"></ion-icon>
-            <p><b>TO</b></p>
-            <p>Caldaro Lake</p>
+            <ion-icon size="large" color="primary" name="bicycle"></ion-icon>
+            <ion-icon size="large" color="primary" name="walk"></ion-icon>
+            <p><b>TO</b> ({{option.arrival_time}})</p>
+            <p>{{item.location_to}}</p>
           </ion-col>
           <ion-col class="align-right col">
             <p><b>Green score</b></p>
-            <img class="green-score" src="/assets/green-scale.jpg"  alt="">
-            <p><small>3/4</small></p>
+            <img class="green-score" src="/assets/green-scale-4.jpg" alt="" *ngIf="option.green_score == 4">
+            <img class="green-score" src="/assets/green-scale-3.jpg" alt="" *ngIf="option.green_score == 3">
+            <img class="green-score" src="/assets/green-scale-2.jpg" alt="" *ngIf="option.green_score == 2">
+            <img class="green-score" src="/assets/green-scale-1.jpg" alt="" *ngIf="option.green_score == 1">
+            <p><small>{{option.green_score}}/4</small></p>
             <section class="flex-bottom bottom-right-flex">
-              <p class="minutes"><span class="big-text">00:30</span><small>min</small></p>
-              <img class="arrow-down" src="/assets/keyboard_arrow_down.svg" alt="">
+              <p class="minutes"><span class="big-text">{{option.total_time}}</span><small>min</small></p>
+              <!-- <img class="arrow-down" src="/assets/keyboard_arrow_down.svg" alt=""> -->
+              <ion-icon size="large" name="information-circle"></ion-icon>
             </section>
           </ion-col>
         </ion-row>
       </ion-grid>
     </ion-card-content>
   </ion-card>
-
-  <!-- <ion-list>
-    <ion-item *ngFor="let item of items">
-      <ion-icon [name]="item.icon" slot="start"></ion-icon>
-      {{item.title}}
-      <div class="item-note" slot="end">
-        {{item.note}}
-      </div>
-    </ion-item>
-  </ion-list> -->
 </ion-content>

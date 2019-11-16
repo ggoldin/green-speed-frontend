@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-list',
@@ -6,30 +7,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['list.page.scss']
 })
 export class ListPage implements OnInit {
-  private icons = [
-    'flask',
-    'wifi',
-    'beer',
-    'football',
-    'basketball',
-    'paper-plane',
-    'american-football',
-    'boat',
-    'bluetooth',
-    'build'
-  ];
-  public items: Array<{ title: string; note: string; icon: string }> = [];
-  constructor() {
-    for (let i = 1; i < 11; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
-    }
+  public item;
+  public options;
+  public type;
+  constructor( public http: HttpClient ) {
+    
   }
 
   ngOnInit() {
+    this.http.get('assets/json/results.json').subscribe(
+        data => {
+          this.item = data['data'][0];
+          // TO FIX: this is not correct if I have more destinations in the json, for now can be this way
+          this.options = data['data'][0].transportation_options;
+          this.type = data['data'][0].transportation_options.map(function(e) {
+            return e.legs.map(function(i) {
+              return i.transportation_type;
+            });
+          });
+          //console.log(this.item, this.options);
+          console.log(this.type);
+        }
+    );
   }
   // add back when alpha.4 is out
   // navigate(item) {
