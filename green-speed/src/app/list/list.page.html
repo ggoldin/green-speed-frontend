@@ -18,12 +18,19 @@
             <img src="/assets/from-to.jpg"  alt="">
           </ion-col>
           <ion-col>
-            <p><b>FROM</b> ({{option.departure_time}})</p>
+            <p><b>DEPARTURE</b> ({{option.departure_time}})</p>
             <p>{{item.location_from}}</p>
-            <ion-icon size="large" color="primary" name="bus"></ion-icon>
-            <ion-icon size="large" color="primary" name="bicycle"></ion-icon>
-            <ion-icon size="large" color="primary" name="walk"></ion-icon>
-            <p><b>TO</b> ({{option.arrival_time}})</p>
+            <ng-container *ngFor="let type of types">
+              <span *ngIf="type == 'walking,bike'">
+                <ion-icon size="large" color="primary" name="walk"></ion-icon>
+                <ion-icon size="large" color="primary" name="bicycle"></ion-icon>
+              </span>
+              <span *ngIf="type == 'walking,bus'">
+                <ion-icon size="large" color="primary" name="walk"></ion-icon>
+                <ion-icon size="large" color="primary" name="bus"></ion-icon>
+              </span>
+            </ng-container>
+            <p><b>ARRIVAL</b> ({{option.arrival_time}})</p>
             <p>{{item.location_to}}</p>
           </ion-col>
           <ion-col class="align-right col">

@@ -28,8 +28,7 @@ export class ListPage implements OnInit {
             }
             return Array.from(s);
           });
-          
-          console.log(this.options.legs);
+          console.log(this.types);
           //console.log(this.types.transportation_type, this.types.transportation_type);
         }
     );
